@@ -12,11 +12,14 @@ public class OptionMenu extends Account {
 	
 	HashMap<Integer, Integer>  data = new HashMap<Integer, Integer>();
 	int selection;
+	
+	// User Account Login
 	public void getLogin() throws IOException{
 		
 		int x = 1;
 		do {
 			try {
+				// set user credential (Account number, Password)
 				data.put(9876543 , 9876);
 				data.put(8989898, 1890);
 				
@@ -34,6 +37,7 @@ public class OptionMenu extends Account {
 				x = 2;
 			}
 			
+			// Check valid Password and Account Number
 			for(Entry<Integer, Integer> entry : data.entrySet()) {
 				if(entry.getKey()==getCustomerNumber() && entry.getValue() == getPinNumber()){
 					getAccountType();
@@ -45,15 +49,16 @@ public class OptionMenu extends Account {
 		
 	}
 
+	// After Login Get Account Type
 	public void getAccountType() {
-		System.out.println("Select the Account you eant to access: ");
+		System.out.println("Select the Account you want to access: ");
 		System.out.println("Type 1 - Checking Account");
 		System.out.println("Type 2 - Saving Account");
 		System.out.println("Type 3 - Exit");
 		System.out.println("Choice: ");
 		
 		selection = menuInput.nextInt();
-		
+		// According to user choice call the valid method
 		switch(selection) {
 		case 1 :
 			getChecking();
@@ -62,7 +67,7 @@ public class OptionMenu extends Account {
 			getSaving();
 			break;
 		case 3: 
-			System.out.println("Thank you for Using this ATM, Have a grad Day!");
+			System.out.println("Thank you for Using this ATM, Have a great Day!");
 			break;
 		default:
 			System.out.println("\n" + "Invalid Choice." + "\n");
@@ -70,6 +75,7 @@ public class OptionMenu extends Account {
 		}
 	}
 	
+	// User Saving Account and Operations to be performed on account.
 	private void getSaving() {
 		System.out.println("Saving Account: ");
 		System.out.println("Type 1 - View Balance");
@@ -106,7 +112,7 @@ public class OptionMenu extends Account {
 		}	
 	}
 	
-
+	// User Checking Account and Operations to be performed on account.
 	private void getChecking() {
 		System.out.println("Checking Account: ");
 		System.out.println("Type 1 - View Balance");
